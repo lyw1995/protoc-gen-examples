@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package user;
+//option go_package="track/example/model";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/descriptor.proto";
+
+// 测试生成 user_msg.proto
+extend google.protobuf.MethodOptions {
+    string method = 24245;
+}
+// 用户控制器
+service UserController {
+    // 用户登录 传用户名,密码
+    rpc Login (LoginReq) returns (LoginResp) {
+        option (method) = "POST";
+    }
+    // 获取用户信息 传用户名即可
+    rpc UserInfo (IdReq) returns (LoginResp) {
+        option (method) = "GET";
+    }
+}
+
+// 用户权限
+enum Role {
+    // 管理员
+    Admin = 0;
+    // 普通用户
+    User = 1;
+}
+
+// 登录请求
+message LoginReq {
+    // 用户昵称
+    string name = 1;
+    // 用户密码
+    string password = 2;
+}
+// 用户ID请求
+message IdReq {
+    // 用户id
+    int64 id = 1;
+}
+
+// 登录响应
+message LoginResp {
+    // 用户id
+    string user_id = 1;
+    // 消息
+    string msg = 2;
+    // 列表
+    repeated google.protobuf.Any list = 3;
+    // 创建时间
+    google.protobuf.Timestamp created_at = 4;
+    // 权限
+    Role role=5;
+}
