@@ -10,7 +10,7 @@
  - ` go run tmpl/cmd/main.go` 执行
  - ` curl http://localhost:8000/userinfo` 
 
-## 说明: 1. proto为定义文件测试文件
+## 说明: 1. proto/user.proto为定义文件测试文件
 ```
 package user;
 //option go_package="track/example/model";
@@ -70,7 +70,7 @@ message LoginResp {
 }
 
 ```
-## 说明: 2. 生成请求,响应结构体
+## 说明: 2. tmpl/ 下为生成go代码 生成请求,响应结构体
 ```
 
 // 用户权限
