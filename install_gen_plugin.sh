@@ -9,7 +9,7 @@ if [ $len -eq 0 ]; then
 fi
 
 # go build 忽略 "_","." 开头的go文件
-$(go build cmd/main.go) #编译
+$(go build -ldflags="-s -w" cmd/main.go) #编译
 # 重命名并移动到 GOPATH/bin
 $(mv main "$array/bin/protoc-gen-tmpl")
 echo "success mv to  $array/bin/protoc-gen-tmpl"
