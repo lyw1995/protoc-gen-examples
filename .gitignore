@@ -3,7 +3,6 @@
 *.exe~
 *.dll
 .idea/
-tmpl
 *.so
 *.dylib
 
